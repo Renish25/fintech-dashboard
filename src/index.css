@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  /* ── Light mode body (default) ── */
+  body {
+    @apply bg-gray-50 text-gray-900 font-body antialiased transition-colors duration-200;
+    min-height: 100vh;
+  }
+
+  /* ── Dark mode body ── */
+  .dark body {
+    background-color: #0d0d12;
+    color: white;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(52, 211, 153, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 90% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-gray-200; }
+  .dark ::-webkit-scrollbar-track { background-color: #13131a; }
+  ::-webkit-scrollbar-thumb { @apply bg-gray-400 rounded-full; }
+  .dark ::-webkit-scrollbar-thumb { background-color: #2d2d3e; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-jade-500; }
+}
+
+@layer components {
+
+  /* ── Card ── */
+  .card {
+    @apply bg-white border border-gray-200 rounded-2xl transition-colors duration-200;
+  }
+  .dark .card {
+    background-color: #13131a;
+    border-color: #22222f;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply bg-jade-500 hover:bg-jade-400 text-white font-display font-semibold px-4 py-2 rounded-xl transition-all duration-150 active:scale-95;
+  }
+  .dark .btn-primary {
+    color: #0d0d12;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-gray-100 text-gray-600 hover:text-gray-900 font-body px-4 py-2 rounded-xl transition-all duration-150 border border-transparent hover:border-gray-300;
+  }
+  .dark .btn-ghost {
+    color: rgba(255,255,255,0.7);
+    border-color: transparent;
+  }
+  .dark .btn-ghost:hover {
+    background-color: #1a1a24;
+    color: white;
+    border-color: #2d2d3e;
+  }
+
+  .btn-danger {
+    @apply bg-crimson-500/10 hover:bg-crimson-500/20 text-crimson-400 border border-crimson-500/30 font-body px-3 py-1.5 rounded-lg transition-all duration-150 text-sm;
+  }
+
+  /* ── Badge ── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-mono font-medium;
+  }
+
+  /* ── Input ── */
+  .input {
+    @apply bg-gray-100 border border-gray-300 rounded-xl px-4 py-2.5 text-gray-900 placeholder-gray-400
+           focus:outline-none focus:border-jade-500 focus:ring-1 focus:ring-jade-500/30
+           transition-all duration-150 text-sm font-body;
+  }
+  .dark .input {
+    background-color: #1a1a24;
+    border-color: #2d2d3e;
+    color: white;
+  }
+  .dark .input::placeholder {
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── Nav items ── */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl
+           text-gray-500 hover:text-gray-900 hover:bg-gray-100
+           transition-all duration-150 font-body text-sm cursor-pointer w-full text-left;
+  }
+  .dark .nav-item {
+    color: rgba(255,255,255,0.5);
+  }
+  .dark .nav-item:hover {
+    color: white;
+    background-color: #1a1a24;
+  }
+
+  .nav-item-active {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl
+           text-gray-900 bg-gray-100 border border-gray-200
+           transition-all duration-150 font-body text-sm cursor-pointer w-full text-left;
+  }
+  .dark .nav-item-active {
+    color: white;
+    background-color: #1a1a24;
+    border-color: #2d2d3e;
+  }
+}
+
+/* ── Recharts light mode ── */
+.recharts-cartesian-grid line { stroke: rgba(0,0,0,0.06) !important; }
+.recharts-text { fill: rgba(0,0,0,0.45) !important; font-family: 'JetBrains Mono', monospace !important; font-size: 11px !important; }
+
+/* ── Recharts dark mode ── */
+.dark .recharts-cartesian-grid line { stroke: rgba(255,255,255,0.04) !important; }
+.dark .recharts-text { fill: rgba(255,255,255,0.4) !important; }
+
+/* .card-bg-dark { background-color: rgba(255, 255, 255, 0.05); }
+.card-bg-light { background-color: rgba(0, 0, 0, 0.05); }
+
+.card-text-dark { color: rgba(255, 255, 255, 0.8); }
+.card-text-light { color: rgba(0, 0, 0, 0.8); }
+
+.card-semi-text-dark { color: rgba(255, 255, 255, 0.5); }
+.card-semi-text-light { color: rgba(0, 0, 0, 0.5); } */
